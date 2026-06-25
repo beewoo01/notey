@@ -16,6 +16,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.ViewModelProvider
 import com.example.notey.repository.NotesRepository
 import com.example.notey.roomdb.NotesDB
+import com.example.notey.screens.DisplayNotesList
 import com.example.notey.ui.theme.NoteyTheme
 import com.example.notey.viewmodel.NoteViewModel
 import com.example.notey.viewmodel.NoteViewModelFactory
@@ -41,6 +42,9 @@ class MainActivity : ComponentActivity() {
         setContent {
             NoteyTheme {
                 val notes by noteViewModel.allNotes.observeAsState(emptyList())
+
+                DisplayNotesList(notes = notes)
+
             }
         }
     }
