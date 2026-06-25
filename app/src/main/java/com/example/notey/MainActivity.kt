@@ -12,9 +12,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.core.graphics.toColorInt
 import androidx.lifecycle.ViewModelProvider
 import com.example.notey.repository.NotesRepository
+import com.example.notey.roomdb.Note
 import com.example.notey.roomdb.NotesDB
 import com.example.notey.screens.DisplayNotesList
 import com.example.notey.ui.theme.NoteyTheme
@@ -38,9 +41,19 @@ class MainActivity : ComponentActivity() {
             vieWModelFactory
         )[NoteViewModel::class.java]
 
+        val note1 = Note(
+            0,
+            "This is a Demo Note",
+            "Welcome my friends, Please Rate us 5 stars" + "to continue updating this course...",
+            "#f59597".toColorInt(),
+        )
+
+        noteViewModel.insert(note1)
 
         setContent {
             NoteyTheme {
+
+
                 val notes by noteViewModel.allNotes.observeAsState(emptyList())
 
                 DisplayNotesList(notes = notes)
