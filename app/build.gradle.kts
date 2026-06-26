@@ -59,4 +59,5 @@ dependencies {
 
     // toptional - Kotlin Extensions and Coroutines support for Room
     implementation("androidx.room:room-ktx:${room_version}")
+    implementation("androidx.compose.material:material-icons-extended")
 }
